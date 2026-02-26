@@ -7,6 +7,10 @@ on:
         description: 'Path to Dockerfile'
         required: true
         default: 'Dockerfile'
+      imagenametag:
+        description: 'Desired Imagename with Tag'
+        required: true
+        default: 'Myapp:latest'
       context:
         description: 'Context for the Docker build (usually the directory of the Dockerfile)'
         required: true
@@ -32,4 +36,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f ${{ inputs.dockerfile }} -t my-image:latest ${{ inputs.context }}
+          docker build -f ${{ inputs.dockerfile }} -t ${{inputs.imagenametag}} ${{ inputs.context }}
