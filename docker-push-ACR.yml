@@ -9,6 +9,15 @@ on:
       acr-login-server:
         description: 'Azure Container Registry login server (e.g., myregistry.azurecr.io)'
         required: true
+      ACR_USERNAME:
+        description: 'ACR_Username'
+        required: true
+      ACR_PASSWORD:
+        description: 'ACR_Password'
+        required: true
+      tag:
+        description: 'The tag of image to push'
+        required: true
 
 jobs:
   push:
@@ -21,10 +30,10 @@ jobs:
         uses: azure/docker-login@v1
         with:
           login-server: ${{ inputs.acr-login-server }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          username: ${{ inputs.ACR_USERNAME }}
+          password: ${{ inputs.ACR_PASSWORD }}
 
       - name: Push Docker image to ACR
         run: |
-          docker tag my-image:latest ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:latest
-          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:latest
+          docker tag ${{ inputs.image-name }}:${{input.tag}} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{input.tag}}
+          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{input.tag}}
