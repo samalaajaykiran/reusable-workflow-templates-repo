@@ -1,0 +1,33 @@
+name: Deploy to Azure App Service
+
+on:
+  workflow_call: 
+    inputs:
+      app-name:
+        description: 'Azure App Service name'
+        required: true
+      image-name:
+        description: 'Docker image name in ACR'
+        required: true
+      acr-login-server:
+        description: 'Azure Container Registry login server'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Azure CLI
+        uses: azure/setup-azurecli@v1
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Docker container to Azure App Service
+        run: |
+          az webapp config container set \
+            --name ${{ inputs.app-name }} \
+            --resource-group myResourceGroup \
+            --docker-custom-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:latest
