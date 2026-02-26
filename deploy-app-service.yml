@@ -3,11 +3,20 @@ name: Deploy to Azure App Service
 on:
   workflow_call: 
     inputs:
+      AZURE_CREDENTIALS:
+        description: 'Azure Credentials'
+        required: true
       app-name:
         description: 'Azure App Service name'
         required: true
+      ResourceGroup:
+        description: 'Azure ResourceGroup name'
+        required: true
       image-name:
         description: 'Docker image name in ACR'
+        required: true
+      tag:
+        description: 'Docker image tag in ACR'
         required: true
       acr-login-server:
         description: 'Azure Container Registry login server'
@@ -23,11 +32,11 @@ jobs:
       - name: Log in to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ inputs.AZURE_CREDENTIALS }}
 
       - name: Deploy Docker container to Azure App Service
         run: |
           az webapp config container set \
             --name ${{ inputs.app-name }} \
-            --resource-group myResourceGroup \
-            --docker-custom-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:latest
+            --resource-group ${{ inputs.ResourceGroup }} \
+            --docker-custom-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
