@@ -1,7 +1,7 @@
 name: Docker Build
 
 on:
-  workflow_call: # To allow this workflow to be reusable
+  workflow_call:
     inputs:
       dockerfile:
         description: 'Path to Dockerfile'
@@ -40,4 +40,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f ${{ inputs.dockerfile }} -t ${{ inputs.image-name }}:${{ input.tag }} ${{ inputs.context }}
+          docker build -f ${{ inputs.dockerfile }} -t ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.context }}
