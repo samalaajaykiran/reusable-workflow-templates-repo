@@ -1,7 +1,7 @@
 name: Docker Push to ACR
 
 on:
-  workflow_call: 
+  workflow_call:
     inputs:
       image-name:
         description: 'The image name to push'
@@ -35,5 +35,5 @@ jobs:
 
       - name: Push Docker image to ACR
         run: |
-          docker tag ${{ inputs.image-name }}:${{input.tag}} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ input.tag }}
-          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ input.tag }}
+          docker tag ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
+          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
