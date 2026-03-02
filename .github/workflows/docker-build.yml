@@ -9,7 +9,7 @@ on:
         default: 'Dockerfile'
         type: string
       image-name:
-        description: 'Imagename'
+        description: 'Image name'
         required: true
         default: 'Myapp'
         type: string
