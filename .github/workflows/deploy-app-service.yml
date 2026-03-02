@@ -19,6 +19,14 @@ on:
         description: 'Docker image tag in ACR'
         required: true
         type: string
+      AZURE_CREDENTIALS:
+        description: 'Azure Credentials'
+        required: true
+        type: string   
+      acr-login-server:
+        description: 'Azure Container Registry login server'
+        required: true
+        type: string  
     secrets:
       AZURE_CREDENTIALS:
         description: 'Azure Credentials'
