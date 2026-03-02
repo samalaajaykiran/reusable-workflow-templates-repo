@@ -20,11 +20,9 @@ on:
       ACR_USERNAME:
         description: 'ACR Username'
         required: true
-        type: boolean
       ACR_PASSWORD:
         description: 'ACR Password'
         required: true
-        type: boolean
 
 jobs:
   push:
