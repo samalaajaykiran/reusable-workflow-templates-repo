@@ -7,18 +7,22 @@ on:
         description: 'Path to Dockerfile'
         required: true
         default: 'Dockerfile'
+        type: string
       image-name:
         description: 'Imagename'
         required: true
         default: 'Myapp'
+        type: string
       tag:
         description: 'Tag'
         required: true
         default: 'v0'
+        type: string
       context:
         description: 'Context for the Docker build (usually the directory of the Dockerfile)'
         required: true
         default: '.'
+        type: string
 
 jobs:
   build:
