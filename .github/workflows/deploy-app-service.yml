@@ -12,7 +12,7 @@ on:
         required: true
         type: string
       ResourceGroup:
-        description: 'Azure ResourceGroup name'
+        description: 'Azure Resource Group name'
         required: true
         type: string
       image-name:
