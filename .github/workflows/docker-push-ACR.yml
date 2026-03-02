@@ -12,15 +12,15 @@ on:
         required: true
         type: string
       ACR_USERNAME:
-        description: 'ACR_Username'
+        description: 'ACR Username'
         required: true
         type: string
       ACR_PASSWORD:
-        description: 'ACR_Password'
+        description: 'ACR Password'
         required: true
         type: string
       tag:
-        description: 'The tag of image to push'
+        description: 'Tag of image to push'
         required: true
         type: string
 
