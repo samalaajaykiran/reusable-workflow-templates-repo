@@ -10,7 +10,7 @@ on:
       ResourceGroup:
         description: 'Azure Resource Group name'
         required: true
-        type: string
+        type: boolean
       image-name:
         description: 'Docker image name in ACR'
         required: true
@@ -21,14 +21,14 @@ on:
         type: string
       acr-login-server:
         description: 'Azure Container Registry login server'
-        required: true
-        type: string  
+        required: true  
+        type: boolean
 
     secrets:
       AZURE_CREDENTIALS:
         description: 'Azure Credentials'
-        required: true
-        type: string   
+        required: true 
+        type: boolean
       
 
 jobs:
