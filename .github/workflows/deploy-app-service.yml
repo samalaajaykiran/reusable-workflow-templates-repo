@@ -3,10 +3,6 @@ name: Deploy to Azure App Service
 on:
   workflow_call:
     inputs:
-      AZURE_CREDENTIALS:
-        description: 'Azure Credentials'
-        required: true
-        type: string
       app-name:
         description: 'Azure App Service name'
         required: true
@@ -23,6 +19,11 @@ on:
         description: 'Docker image tag in ACR'
         required: true
         type: string
+    secrets:
+      AZURE_CREDENTIALS:
+        description: 'Azure Credentials'
+        required: true
+        type: string   
       acr-login-server:
         description: 'Azure Container Registry login server'
         required: true
