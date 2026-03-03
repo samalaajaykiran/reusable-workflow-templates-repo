@@ -37,8 +37,11 @@ jobs:
           login-server: ${{ inputs.acr-login-server }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-
+            
       - name: Push Docker image to ACR
         run: |
+          docker images
           docker tag ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
+          echo "Listing Docker images..."
+          docker images
           docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
