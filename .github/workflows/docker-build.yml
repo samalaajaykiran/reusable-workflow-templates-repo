@@ -33,7 +33,14 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -f ${{ inputs.dockerfile }} -t ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.context }}
+          docker save ${{ inputs.image-name }}:${{ inputs.tag }} -o ${{ inputs.image-name }}_${{ inputs.tag }}.tar
         
+      - name: Upload Docker image as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ inputs.image-name }}-image
+          path: ${{ inputs.image-name }}_${{ inputs.tag }}.tar
+          
       - name: List Docker images
         run: |
           echo "Listing Docker images..."
