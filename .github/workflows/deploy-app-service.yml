@@ -36,7 +36,6 @@ jobs:
       - name: Set up Azure CLI
         uses: azure/cli@v2
         with:
-          azcliversion: latest
           inlineScript: |
             az account show
             az storage -h
