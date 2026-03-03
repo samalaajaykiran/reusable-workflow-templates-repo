@@ -33,3 +33,10 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -f ${{ inputs.dockerfile }} -t ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.context }}
+      
+      - name: List Docker images
+      run: |
+        echo "Listing Docker images..."
+        docker images
+        
+        
