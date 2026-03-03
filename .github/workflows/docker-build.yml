@@ -36,7 +36,7 @@ jobs:
           docker save ${{ inputs.image-name }}:${{ inputs.tag }} -o ${{ inputs.image-name }}_${{ inputs.tag }}.tar
         
       - name: Upload Docker image as artifact
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.image-name }}-image
           path: ${{ inputs.image-name }}_${{ inputs.tag }}.tar
