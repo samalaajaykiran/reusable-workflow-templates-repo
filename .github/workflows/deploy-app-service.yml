@@ -78,6 +78,7 @@ jobs:
             --name ${{ inputs.app-name }} \
             --resource-group ${{ inputs.ResourceGroup }} \
             --container-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
-      
+          
       - name: Output Web App URL
-        run: echo "Web app deployed at: https://${{ inputs.app-name }}.azurewebsites.net"
+        run: |
+          echo "Web app deployed at: https://${{ inputs.app-name }}.azurewebsites.net"
