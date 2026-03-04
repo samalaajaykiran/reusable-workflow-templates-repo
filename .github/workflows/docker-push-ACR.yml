@@ -67,7 +67,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: false
           environment: azurecloud
-          allow-no-subscriptions: false
+          allow-no-subscriptions: true
           audience: api://AzureADTokenExchange
           auth-type: SERVICE_PRINCIPAL
          
