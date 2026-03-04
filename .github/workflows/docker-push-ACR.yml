@@ -27,10 +27,6 @@ on:
         description: 'Location of Azure Container Registry'
         required: true
         type: string
-      subscription-id:
-        description: 'Azure subscription-id'
-        required: true
-        type: string
         
     secrets:
       ACR_USERNAME:
@@ -64,17 +60,7 @@ jobs:
       - name: Log in to Azure CLI
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          enable-AzPSSession: false
-          environment: azurecloud
-          allow-no-subscriptions: true
-          audience: api://AzureADTokenExchange
-          auth-type: SERVICE_PRINCIPAL
-         
-      - name: Set Azure Subscription
-        run: |
-          az account set --subscription ${{ inputs.subscription-id }} 
-          
+          creds: ${{ secrets.AZURE_CREDENTIALS }}         
       - name: Debug Azure Credentials
         run: echo "${{ secrets.AZURE_CREDENTIALS }}"
       # Create an Azure Container Registry (ACR)
