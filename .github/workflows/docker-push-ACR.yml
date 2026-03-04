@@ -73,7 +73,7 @@ jobs:
          
       - name: Set Azure Subscription
         run: |
-          az account set --subscription ${{ subscription-id }} 
+          az account set --subscription ${{ inputs.subscription-id }} 
           
       - name: Debug Azure Credentials
         run: echo "${{ secrets.AZURE_CREDENTIALS }}"
