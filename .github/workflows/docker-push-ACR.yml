@@ -35,6 +35,9 @@ on:
       ACR_PASSWORD:
         description: 'ACR Password'
         required: true
+      AZURE_CREDENTIALS:
+        description: 'ACR Password'
+        required: true
 
 jobs:
   push:
