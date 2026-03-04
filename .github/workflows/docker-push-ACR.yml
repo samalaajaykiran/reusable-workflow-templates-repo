@@ -57,6 +57,8 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Debug Azure Credentials
+        run: echo "${{ secrets.AZURE_CREDENTIALS }}"
 
       # Create an Azure Container Registry (ACR)
       - name: Create ACR
