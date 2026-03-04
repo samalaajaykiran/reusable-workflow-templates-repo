@@ -55,6 +55,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2  
 
+
       # Log in to Azure using GitHub Secrets
       - name: Log in to Azure CLI
         uses: azure/login@v2
@@ -62,17 +63,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Debug Azure Credentials
         run: echo "${{ secrets.AZURE_CREDENTIALS }}"
-
       # Create an Azure Container Registry (ACR)
       - name: Create ACR
         run: |
           az acr create --resource-group ${{ inputs.ResourceGroup }} --name ${{ inputs.acr-name }} --sku Basic --location ${{ inputs.acr-location }}
-
       # Log in to ACR
       - name: Log in to Azure Container Registry (ACR)
         run: |
-          az acr login --name ${{ inputs.acr-name }}
-          
+          az acr login --name ${{ inputs.acr-name }}          
       # Verify if login was successful by listing repositories in ACR
       - name: List repositories in ACR
         run: |
