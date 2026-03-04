@@ -27,6 +27,10 @@ on:
         description: 'Runtime Stack'
         required: true  
         type: string
+      acr-location:
+        description: 'Location of Azure Container Registry'
+        required: true
+        type: string
 
     secrets:
       AZURE_CREDENTIALS:
@@ -58,7 +62,7 @@ jobs:
         
       - name: Create Resource Group
         run: |
-          az group create --name ${{ inputs.ResourceGroup }} --location eastus  
+          az group create --name ${{ inputs.ResourceGroup }} --location ${{ inputs.acr-location }}  
       - name: Create App Service Plan
         run: |
           az appservice plan create --name ${{ inputs.app-name }}-plan --resource-group ${{ inputs.ResourceGroup }} --sku F1 --is-linux
