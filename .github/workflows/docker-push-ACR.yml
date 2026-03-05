@@ -88,7 +88,7 @@ jobs:
     
             
       # Create ACR 
-      - name: Create ACR if not exists
+      - name: Creating ACR
         run: |
           az acr create --resource-group ${{ inputs.ResourceGroup }} --name ${{ inputs.acr-name }} --sku Basic --location ${{ inputs.acr-location }}
       - name: Check if ACR exists
