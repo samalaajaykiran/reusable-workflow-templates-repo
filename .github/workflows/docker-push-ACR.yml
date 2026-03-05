@@ -30,13 +30,13 @@ on:
         
     secrets:
       ACR_USERNAME:
-        description: 'ACR Username'
+        description: 'ACR_Username'
         required: true
       ACR_PASSWORD:
-        description: 'ACR Password'
+        description: 'ACR_Password'
         required: true
       AZURE_CREDENTIALS:
-        description: 'AZURE CREDENTIALS'
+        description: 'AZURE_CREDENTIALS'
         required: true
 
 jobs:
