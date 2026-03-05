@@ -68,7 +68,7 @@ jobs:
           az webapp config container set \
             --name ${{ inputs.app-name }} \
             --resource-group ${{ inputs.ResourceGroup }} \
-            --container-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
+            --container-image-name ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ github.sha }}
           
       - name: Output Web App URL
         run: |
