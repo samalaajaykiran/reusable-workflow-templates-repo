@@ -87,7 +87,7 @@ jobs:
           az webapp create --name ${{ inputs.app-name }} --resource-group ${{ inputs.ResourceGroup }} --plan ${{ inputs.app-name }}-plan --runtime "${{ inputs.runtime }}"
     
             
-      # Create ACR if not exists
+      # Create ACR 
       - name: Create ACR if not exists
         run: |
           az acr create --resource-group ${{ inputs.ResourceGroup }} --name ${{ inputs.acr-name }} --sku Basic --location ${{ inputs.acr-location }}
