@@ -35,9 +35,18 @@ on:
       ACR_PASSWORD:
         description: 'ACR_Password'
         required: true
-      AZURE_CREDENTIALS:
-        description: 'AZURE_CREDENTIALS'
+      AZURE_CLIENT_ID:
+        description: 'AZURE_CLIENT_ID'
         required: true
+      AZURE_CLIENT_SECRET:
+        description: 'AZURE_CLIENT_SECRET'
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        description: 'AZURE_SUBSCRIPTION_ID'
+        required: true
+      AZURE_TENANT_ID:
+        description: 'AZURE_TENANT_ID'
+        required: true  
 
 jobs:
   push:
@@ -59,7 +68,11 @@ jobs:
       - name: Log in to Azure CLI
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}       
+          creds: |
+            ${{ secrets.AZURE_CLIENT_ID }}
+            ${{ secrets.AZURE_CLIENT_SECRET }}      
+            ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            ${{ secrets.AZURE_TENANT_ID }} 
   
       - name: Azure CLI script
         uses: azure/cli@v2
