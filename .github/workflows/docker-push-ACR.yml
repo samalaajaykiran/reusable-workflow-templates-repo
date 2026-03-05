@@ -84,7 +84,7 @@ jobs:
           az appservice plan create --name ${{ inputs.app-name }}-plan --resource-group ${{ inputs.ResourceGroup }} --sku F1 --is-linux
       - name: Create Web App Service
         run: |
-          az webapp create --name ${{ inputs.app-name }} --resource-group ${{ inputs.ResourceGroup }} --plan ${{ inputs.app-name }}-plan --runtime ${{ inputs.runtime }} 
+          az webapp create --name ${{ inputs.app-name }} --resource-group ${{ inputs.ResourceGroup }} --plan ${{ inputs.app-name }}-plan --runtime "${{ inputs.runtime }}"
     
             
       # Create ACR if not exists
