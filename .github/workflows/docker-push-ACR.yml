@@ -107,7 +107,7 @@ jobs:
       - name: Push Docker image to ACR
         run: |
           docker images
-          docker tag ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
+          docker tag ${{ inputs.image-name }}:${{ inputs.tag }} ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ github.sha }}
           echo "Listing Docker images..."
           docker images
-          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ inputs.tag }}
+          docker push ${{ inputs.acr-login-server }}/${{ inputs.image-name }}:${{ github.sha }}
